@@ -1,9 +1,37 @@
 .App {
   text-align: center; }
 
+.container {
+  background: #0f0449; }
+
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px; }
+
+.box1 {
+  background: red; }
+
+header {
+  padding: 17px 0;
+  overflow: auto; }
+  header .logo {
+    display: inline-block;
+    float: left;
+    color: white; }
+  header .menu {
+    display: inline-block;
+    float: right;
+    color: white; }
+    header .menu a {
+      color: white;
+      text-decoration: none;
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 3px;
+      border: 1px solid #304ffe;
+      transition: all .5s ease-in-out; }
+      header .menu a:hover {
+        color: gray; }
 
 .App-header {
   background-color: #222;
