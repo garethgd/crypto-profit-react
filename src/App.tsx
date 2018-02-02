@@ -1,20 +1,22 @@
 import * as React from 'react';
+import Home from './home/home';
+// import Results from './results/results';
 import './App.css';
 
-class App extends React.Component {
+export type Props = {
+
+};
+
+class App extends React.Component<Props> {
+
+  constructor(props: Props) {
+    super(props);
+    this.state = {date: new Date()};
+  }
+
   render() {
     return (
-      <div className="container">
-      <header>
-          <div className="logo"> 
-             Coin Profit
-          </div>
-
-          <nav className="menu">
-          <a href="#"> Register </a>
-          </nav>
-         </header>
-      </div>
+      <Home />
     );
   }
 }

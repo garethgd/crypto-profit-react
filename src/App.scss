@@ -1,10 +1,12 @@
-@import './sass/home';
-@import './sass/results';
+@import './styles/_home';
+@import './styles/_results';
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:300,400,500,700');
+
 .App {
   text-align: center;
 }
 .container{
-  background:#0f0449;
+
 }
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
@@ -14,6 +16,19 @@
 background:red;
 }
 
+body{
+  // font-family: "Roboto Mono",Helvetica,Arial,sans-serif;
+  font-family: "Roboto Mono",Helvetica,Arial,sans-serif;
+  background: #200122; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #200122, #6f0000); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #200122, #6f0000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+h1, h2, h3, h4{
+  font-family: "Roboto Mono",Helvetica,Arial,sans-serif;
+}
+
+
 header{
   padding:17px 0;
   overflow: auto;
@@ -21,20 +36,23 @@ header{
     display:inline-block;
     float:left;
     color:white;
+    font-family: "Roboto Mono",Helvetica,Arial,sans-serif;
   }
 
   .menu{
     display:inline-block;
     float:right;
     color:white;
+        font-family: "Roboto Mono",Helvetica,Arial,sans-serif;
 
     a{
       color:white;
       text-decoration: none;
+      border:none;
       display:inline-block;
       padding:10px 20px;
       border-radius:3px;
-      border:1px solid #304ffe;
+      font-family: "Roboto Mono",Helvetica,Arial,sans-serif;
       transition: all .5s ease-in-out;
       &:hover{
         color:gray;
