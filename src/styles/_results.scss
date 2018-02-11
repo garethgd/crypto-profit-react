@@ -1,9 +1,25 @@
 .results{
 
+    h1,h2,h3, h4{
+        font-family: "Roboto Mono",Helvetica,Arial,sans-serif;
+        color:white;
+    }
+
+    .ads{
+        background:grey;
+        height:90px;
+        margin: 30px auto;
+    }
+
     h1{
         font-size:3rem;
         font-weight:100px;
         text-align: center;
+    }
+
+    h2{
+        text-align: center;
+        color:white;
     }
 
     h3{
@@ -14,9 +30,9 @@
 
     h4{
         text-align: center;
-        font-size:1.3rem;
+        font-size:2.4rem;
         font-weight:300;
-        color:#44B8FF;
-
+        line-height: 30px;
     }
+
 }

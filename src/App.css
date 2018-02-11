@@ -4,6 +4,19 @@
   font-family: "Roboto Mono",Helvetica,Arial,sans-serif; }
   .home img {
     width: 100%; }
+  .home .logo {
+    font-size: 7rem;
+    color: white; }
+  .home h1 {
+    color: white;
+    line-height: 5rem;
+    font-size: 29px;
+    text-transform: lowercase; }
+  .home p {
+    color: white;
+    line-height: 30px;
+    font-size: 16px;
+    margin-top: 20px; }
   .home h2 {
     color: white;
     font-size: 24px;
@@ -36,7 +49,11 @@
     margin-bottom: 20px;
     border: none;
     background: #3d0115; }
-  .home button {
+  .home .react-datepicker__input-container {
+    width: 100%; }
+  .home .react-datepicker-wrapper {
+    width: 100%; }
+  .home .submit button {
     background: none;
     color: #44B8FF;
     padding: 10px 15px;
@@ -52,14 +69,27 @@
     font-size: 16px;
     margin-top: 15px;
     transition: all .2s ease-in-out; }
-    .home button:hover {
+    .home .submit button:hover {
       background: #230121;
       border: none; }
+
+.results h1, .results h2, .results h3, .results h4 {
+  font-family: "Roboto Mono",Helvetica,Arial,sans-serif;
+  color: white; }
+
+.results .ads {
+  background: grey;
+  height: 90px;
+  margin: 30px auto; }
 
 .results h1 {
   font-size: 3rem;
   font-weight: 100px;
   text-align: center; }
+
+.results h2 {
+  text-align: center;
+  color: white; }
 
 .results h3 {
   text-align: center;
@@ -68,9 +98,9 @@
 
 .results h4 {
   text-align: center;
-  font-size: 1.3rem;
+  font-size: 2.4rem;
   font-weight: 300;
-  color: #44B8FF; }
+  line-height: 30px; }
 
 .App {
   text-align: center; }

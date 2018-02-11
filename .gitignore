@@ -9,6 +9,7 @@
 # production
 /build
 /node_modules
+/ionicons-master
 
 # misc
 .DS_Store

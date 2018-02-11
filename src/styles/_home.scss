@@ -5,6 +5,25 @@
         width: 100%;
     }
 
+    .logo{
+        font-size: 7rem;
+        color: white;
+    }
+
+    h1{
+        color: white;
+        line-height: 5rem;
+        font-size: 29px;
+        text-transform: lowercase;
+    }
+
+    p{
+        color: white;
+        line-height: 30px;
+        font-size: 16px;
+        margin-top: 20px;
+    }
+
     h2{
         color:white;
         font-size: 24px;
@@ -46,6 +65,15 @@
         background: #3d0115;
     }
 
+    
+    .react-datepicker__input-container{
+        width:100%;
+    }
+
+    .react-datepicker-wrapper{
+        width:100%;
+    }
+.submit{
     button{
         background: none;
         color: #44B8FF;
@@ -68,4 +96,5 @@
             border:none;
         }
     }
+}
 }
