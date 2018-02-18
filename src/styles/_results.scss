@@ -1,8 +1,84 @@
 .results{
-
+    [class*="col-"] {
+        background-clip: padding-box;
+    }
     h1,h2,h3, h4{
         font-family: "Roboto Mono",Helvetica,Arial,sans-serif;
         color:white;
+    }
+
+    h2{
+        font-size:24px;
+    }
+    .loader{
+        margin: 0 auto;
+    }
+    .red1{
+        color: #CC4A14;
+    }
+    .red2{
+        color: #FF0000
+        
+    }
+    .red3{
+        color: #40FF40
+    }
+    .red4{
+        color: #54CC14
+    }
+    .red5{
+        color: #00B20F;
+    }
+
+    h1{
+        font-size: 3rem;
+        text-align: center;
+        text-transform: lowercase;
+        margin-bottom: 25px;
+    }
+    .stats{
+        height: 100%;
+        padding: 0;
+        margin: 0;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .grid-item{
+        height: 153px;
+        //background: white;
+        display:table;
+        margin: 10px;
+
+        @media only screen and (max-width: 800px) {
+            margin: 0 auto;
+        }
+
+        h1{
+            font-size: 3.8rem;
+            font-weight: 100px;
+            text-align: center;
+            display: block;
+            display: inline-block;
+            font-weight: 400;
+            letter-spacing: -2px;
+            margin-bottom: 0;
+            width: 100%;
+
+        }
+    
+
+        >div{
+            display:table-cell;
+            vertical-align: middle;
+        }
+        .textWrap{
+         
+        }
     }
 
     .ads{
@@ -11,15 +87,12 @@
         margin: 30px auto;
     }
 
-    h1{
-        font-size:3rem;
-        font-weight:100px;
-        text-align: center;
-    }
-
+    
     h2{
         text-align: center;
         color:white;
+        display: block;
+        width: 100%;
     }
 
     h3{
@@ -30,9 +103,29 @@
 
     h4{
         text-align: center;
-        font-size:2.4rem;
-        font-weight:300;
         line-height: 30px;
+        display: block;
+         width: 100%;
+         text-transform: lowercase;
+         font-family: inherit;
+        font-weight: 500;
+        color:white;
+        font-family: "Roboto Mono",Helvetica,Arial,sans-serif;
+        line-height: 1.6;
+    }
+
+    @media only screen and (max-width: 500px) {
+
+        .results .grid-item > div {
+            display: block;
+        }
+
+        h2{
+            line-height: 40px;
+        }
+        .stats{
+            display:block;
+        }
     }
 
 }

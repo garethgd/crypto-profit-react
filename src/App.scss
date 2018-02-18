@@ -16,6 +16,14 @@
 background:red;
 }
 
+.loader{
+  text-align: center;
+  margin-top: 20%;
+  >div{
+    margin: 0 auto;
+  }
+}
+
 body{
   // font-family: "Roboto Mono",Helvetica,Arial,sans-serif;
   font-family: "Roboto Mono",Helvetica,Arial,sans-serif;
@@ -32,14 +40,21 @@ h1, h2, h3, h4{
 header{
   padding:17px 0;
   overflow: auto;
+
+  .header-icon{
+    font-size: 30px;
+    margin: 10px;
+  }
+
   .logo{
     display:inline-block;
     float:left;
     color:white;
+    margin-top: 20px;
     font-family: "Roboto Mono",Helvetica,Arial,sans-serif;
   }
 
-  .menu{
+  .menuList{
     display:inline-block;
     float:right;
     color:white;
@@ -50,7 +65,6 @@ header{
       text-decoration: none;
       border:none;
       display:inline-block;
-      padding:10px 20px;
       border-radius:3px;
       font-family: "Roboto Mono",Helvetica,Arial,sans-serif;
       transition: all .5s ease-in-out;

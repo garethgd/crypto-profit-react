@@ -1,14 +1,25 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto+Mono:300,400,500,700");
 @import url("https://fonts.googleapis.com/css?family=Roboto+Mono:300,400,500,700");
+.container {
+  padding-left: 0; }
+
 .home {
-  font-family: "Roboto Mono",Helvetica,Arial,sans-serif; }
+  font-family: "Roboto Mono",Helvetica,Arial,sans-serif;
+  padding-left: 0 !important; }
+  .home .title {
+    text-align: center;
+    font-weight: bold;
+    text-transform: none;
+    letter-spacing: -2px;
+    margin-bottom: 20px;
+    margin-top: 0; }
   .home img {
     width: 100%; }
   .home .logo {
     font-size: 7rem;
     color: white; }
   .home h1 {
-    color: white;
+    color: #fff;
     line-height: 5rem;
     font-size: 29px;
     text-transform: lowercase; }
@@ -19,13 +30,15 @@
     margin-top: 20px; }
   .home h2 {
     color: white;
-    font-size: 24px;
+    font-size: 20px;
     margin-bottom: 2rem;
     font-family: "Roboto Mono",Helvetica,Arial,sans-serif;
     text-align: center;
-    text-transform: lowercase; }
+    text-transform: lowercase;
+    font-weight: normal; }
   .home select {
     width: 100%;
+    padding-left: 10px;
     height: 40px;
     margin-bottom: 20px;
     color: white;
@@ -33,7 +46,7 @@
     background: #3d0115; }
   .home label {
     display: block;
-    font-weight: 600;
+    font-weight: normal;
     font-size: 18px;
     font-family: "Roboto Mono",Helvetica,Arial,sans-serif;
     color: white;
@@ -49,6 +62,29 @@
     margin-bottom: 20px;
     border: none;
     background: #3d0115; }
+  .home .currency {
+    width: 100%;
+    margin: 5px;
+    margin-left: 0; }
+  .home .errorMsg {
+    margin-top: 0; }
+  .home .price {
+    width: 100%;
+    margin: 5px;
+    margin-right: 0;
+    margin-left: 0;
+    margin-top: 5; }
+  .home .react-datepicker__current-month, .home .react-datepicker-time__header {
+    font-size: 1.3rem; }
+  .home .react-datepicker__day-name, .home .react-datepicker__day, .home .react-datepicker__time-name {
+    color: #000;
+    display: inline-block;
+    width: 3.7rem;
+    line-height: 1.7rem;
+    text-align: center;
+    margin: 0.166rem; }
+  .home .react-datepicker {
+    font-size: 1.2rem; }
   .home .react-datepicker__input-container {
     width: 100%; }
   .home .react-datepicker-wrapper {
@@ -72,24 +108,95 @@
     .home .submit button:hover {
       background: #230121;
       border: none; }
+  @media only screen and (max-width: 500px) {
+    .home .submit button {
+      width: 100%;
+      margin-bottom: 30px;
+      margin-top: 0px; }
+    .home h2 {
+      line-height: 34px; }
+    .home .currency {
+      width: 100%; }
+    .home .price {
+      width: 100%; } }
+
+.results [class*="col-"] {
+  background-clip: padding-box; }
 
 .results h1, .results h2, .results h3, .results h4 {
   font-family: "Roboto Mono",Helvetica,Arial,sans-serif;
   color: white; }
+
+.results h2 {
+  font-size: 24px; }
+
+.results .loader {
+  margin: 0 auto; }
+
+.results .red1 {
+  color: #CC4A14; }
+
+.results .red2 {
+  color: #FF0000; }
+
+.results .red3 {
+  color: #40FF40; }
+
+.results .red4 {
+  color: #54CC14; }
+
+.results .red5 {
+  color: #00B20F; }
+
+.results h1 {
+  font-size: 3rem;
+  text-align: center;
+  text-transform: lowercase;
+  margin-bottom: 25px; }
+
+.results .stats {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+.results .grid-item {
+  height: 153px;
+  display: table;
+  margin: 10px; }
+  @media only screen and (max-width: 800px) {
+    .results .grid-item {
+      margin: 0 auto; } }
+  .results .grid-item h1 {
+    font-size: 3.8rem;
+    font-weight: 100px;
+    text-align: center;
+    display: block;
+    display: inline-block;
+    font-weight: 400;
+    letter-spacing: -2px;
+    margin-bottom: 0;
+    width: 100%; }
+  .results .grid-item > div {
+    display: table-cell;
+    vertical-align: middle; }
 
 .results .ads {
   background: grey;
   height: 90px;
   margin: 30px auto; }
 
-.results h1 {
-  font-size: 3rem;
-  font-weight: 100px;
-  text-align: center; }
-
 .results h2 {
   text-align: center;
-  color: white; }
+  color: white;
+  display: block;
+  width: 100%; }
 
 .results h3 {
   text-align: center;
@@ -98,9 +205,23 @@
 
 .results h4 {
   text-align: center;
-  font-size: 2.4rem;
-  font-weight: 300;
-  line-height: 30px; }
+  line-height: 30px;
+  display: block;
+  width: 100%;
+  text-transform: lowercase;
+  font-family: inherit;
+  font-weight: 500;
+  color: white;
+  font-family: "Roboto Mono",Helvetica,Arial,sans-serif;
+  line-height: 1.6; }
+
+@media only screen and (max-width: 500px) {
+  .results .results .grid-item > div {
+    display: block; }
+  .results h2 {
+    line-height: 40px; }
+  .results .stats {
+    display: block; } }
 
 .App {
   text-align: center; }
@@ -111,6 +232,12 @@
 
 .box1 {
   background: red; }
+
+.loader {
+  text-align: center;
+  margin-top: 20%; }
+  .loader > div {
+    margin: 0 auto; }
 
 body {
   font-family: "Roboto Mono",Helvetica,Arial,sans-serif;
@@ -127,26 +254,29 @@ h1, h2, h3, h4 {
 header {
   padding: 17px 0;
   overflow: auto; }
+  header .header-icon {
+    font-size: 30px;
+    margin: 10px; }
   header .logo {
     display: inline-block;
     float: left;
     color: white;
+    margin-top: 20px;
     font-family: "Roboto Mono",Helvetica,Arial,sans-serif; }
-  header .menu {
+  header .menuList {
     display: inline-block;
     float: right;
     color: white;
     font-family: "Roboto Mono",Helvetica,Arial,sans-serif; }
-    header .menu a {
+    header .menuList a {
       color: white;
       text-decoration: none;
       border: none;
       display: inline-block;
-      padding: 10px 20px;
       border-radius: 3px;
       font-family: "Roboto Mono",Helvetica,Arial,sans-serif;
       transition: all .5s ease-in-out; }
-      header .menu a:hover {
+      header .menuList a:hover {
         color: gray; }
 
 .App-header {

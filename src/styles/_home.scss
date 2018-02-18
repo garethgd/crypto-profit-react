@@ -1,17 +1,33 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Mono:300,400,500,700');
+
+.container{
+    padding-left: 0;
+}
 .home{
     font-family: "Roboto Mono",Helvetica,Arial,sans-serif;
+    padding-left: 0 !important;
+
+    .title{
+        text-align: center;
+        font-weight: bold;
+        text-transform: none;
+        letter-spacing: -2px;
+        margin-bottom: 20px;
+        margin-top: 0;
+    }
+
     img{
         width: 100%;
     }
-
+    
     .logo{
         font-size: 7rem;
         color: white;
+        
     }
 
     h1{
-        color: white;
+        color: #fff;
         line-height: 5rem;
         font-size: 29px;
         text-transform: lowercase;
@@ -26,15 +42,17 @@
 
     h2{
         color:white;
-        font-size: 24px;
+        font-size: 20px;
         margin-bottom:2rem;
         font-family: "Roboto Mono",Helvetica,Arial,sans-serif;
         text-align: center;
         text-transform: lowercase;
+        font-weight: normal;
     }
 
     select{
         width:100%;
+        padding-left: 10px;
         height: 40px;
         margin-bottom: 20px;
         color:white;
@@ -44,7 +62,7 @@
 
     label{
         display:block;
-        font-weight:600;
+        font-weight:normal;
         font-size: 18px;
         font-family: "Roboto Mono",Helvetica,Arial,sans-serif;
         color:white;
@@ -65,7 +83,35 @@
         background: #3d0115;
     }
 
-    
+    .currency{
+        width: 100%;
+        margin: 5px;
+        margin-left: 0;
+    }
+    .errorMsg{
+        margin-top: 0;
+    }
+    .price{
+        width: 100%;
+        margin: 5px;
+        margin-right: 0;
+        margin-left: 0;
+        margin-top: 5;
+    }
+    .react-datepicker__current-month, .react-datepicker-time__header {
+        font-size: 1.3rem;
+    }
+    .react-datepicker__day-name, .react-datepicker__day, .react-datepicker__time-name {
+        color: #000;
+        display: inline-block;
+        width: 3.7rem;
+        line-height: 1.7rem;
+        text-align: center;
+        margin: 0.166rem;
+    }
+    .react-datepicker{
+        font-size: 1.2rem;
+    }
     .react-datepicker__input-container{
         width:100%;
     }
@@ -95,6 +141,28 @@
             background: #230121;
             border:none;
         }
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .submit {
+        button{
+            width:100%;
+            margin-bottom: 30px;
+         margin-top: 0px;
+        }
+    }
+
+    h2{
+        line-height: 34px;
+    }
+
+    .currency{
+        width:100%;
+    }
+
+    .price{
+        width:100%;
     }
 }
 }

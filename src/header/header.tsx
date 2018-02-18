@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
+import SocialBuffer from 'react-icons/lib/io/calculator';
 
 export type State = {
 
@@ -22,9 +24,10 @@ class Header extends React.Component {
           <div className="logo"> 
              Coin Profit
           </div>
-
-          <nav className="menu">
-          <a href="#"> Register </a>
+         
+          <nav className="menuList">
+          <SocialBuffer className="header-icon" />
+         <Link to={'/home'}> <a href="#"> Calculate </a> </Link>
           </nav>
          </header>
       </div>
