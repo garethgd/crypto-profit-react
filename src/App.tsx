@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Home from './home/home';
 import Results from './results/results';
+import Login from './login/login';
 import  { Moment } from 'moment';
 import './App.css';
 import axios from 'axios';
@@ -24,6 +25,7 @@ export type coinResult = {
 export type State = {
  data: any,
  loading: boolean;
+ error: { errorHappened: boolean, errorMsg: string } ,
  currentPrice: any,
  total: { newCP?: number, CP?: number, newSP?: number, SP?: number, lostPercent?: number }
 };
@@ -33,6 +35,7 @@ class App extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
+      error: {errorHappened: false, errorMsg: ''},
       data: [],
       loading: true,
       currentPrice: [],
@@ -50,14 +53,21 @@ class App extends React.Component<Props, State> {
      this.setState({
        currentPrice: response.data[`${currency}`]
      });
+
+    }
+  ).catch( (error) => {
+    this.setState({
+      error: {errorHappened: true, errorMsg: error.message}
     });
+  });
 
     axios.get(`https://rocky-bayou-96357.herokuapp.com/https://min-api.cryptocompare.com/data/pricehistorical?fsym=${coinSym}&tsyms=${currency},USD,EUR&ts=${date.unix()}&extraParams=your_app_name`)
     .then( (response) => {
- 
      this.setState({
+      error : {errorHappened: false, errorMsg: ''},
        data: response.data[`${coinSym}`]
      }, () => {
+       if ( response.data.Response !== 'Error'){
         const CP: number = this.state.data[`${currency}`];
         let newCP = (parseInt(price, undefined) * 100);
         newCP = (newCP * CP) / 100;
@@ -82,16 +92,25 @@ class App extends React.Component<Props, State> {
           let totalLoss = {coinAmount: price, CP: parseInt(price, undefined), currency: currency, symbol: coinSym, newCP : newCP, lostPercent: lossPercent, newSP: newSP};
 
          this.setState({
-           loading: false,
+            loading: false,  
             total: totalLoss
           });
          
         }
-
+      }
+      else{
+      this.setState({
+        loading: false,
+        error : {errorHappened: true, errorMsg: response.data.Message}
+       });
+      }
      });
       
     })
-    .catch(function (error) {
+    .catch( (error) => {
+      this.setState({
+        error: {errorHappened: true, errorMsg: error.message}
+      });
     });
   }
 
@@ -101,7 +120,7 @@ class App extends React.Component<Props, State> {
     );
 
     const ResultsPage = () => (
-      <Results data={this.state.data} loading={this.state.loading} total={this.state.total}>Dashboard</Results>  
+      <Results data={this.state.data} error={this.state.error} loading={this.state.loading} total={this.state.total}>Dashboard</Results>  
   );
   
     return (
@@ -109,6 +128,7 @@ class App extends React.Component<Props, State> {
         <Switch>
           <Route exact={true} path="/" component={HomePage} />
           <Route path="/home" component={HomePage} />
+          <Route path="/login" component={Login} />
           <Route path="/results" component={ResultsPage} />
         </Switch>
       </Router>

@@ -3,13 +3,16 @@ import Header from '../header/header';
 import { Doughnut } from 'react-chartjs-2';
 import AdSense from 'react-adsense';
 import { ClipLoader } from 'react-spinners';
+import { Tabs, Tab } from 'react-bootstrap';
 
 export type State = {
-    loading: boolean
-   };
+    loading: boolean,
+    isAuthenticated: boolean,
+ };
 
 export type Props = {
   data: any;
+  error: {errorHappened: boolean, errorMsg: string}
   loading: boolean;
   total: {
        coinAmount?: string;
@@ -26,7 +29,7 @@ export type Props = {
 class Results extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
-    this.state = { loading: true};
+    this.state = { loading: true, isAuthenticated: false};
   }
   render() {
     const total = this.props.total;
@@ -72,7 +75,7 @@ class Results extends React.Component<Props, State> {
   
     return (
       <section>
-        <Header />
+        <Header isAuthenticated={this.state.isAuthenticated} />
         {this.props.loading ?  
         <div className="loader">
             <ClipLoader
@@ -82,9 +85,21 @@ class Results extends React.Component<Props, State> {
         </div> : 
       
           <div className="container results">
-          <AdSense.Google client='ca-pub-7774581586268507' slot='9791409900' />
+          <AdSense.Google className="example_responsive_1" client='ca-pub-7774581586268507' slot='9791409900' />
            <h1> Calculated Profits </h1>
-           <Doughnut data={data} options={data.options} height={100}/>
+
+           <Tabs defaultActiveKey={1} id="uncontrolled-tab-example">
+            <Tab eventKey={1} title="Tab 1">
+                 <Doughnut data={data} options={data.options} height={100}/>
+            </Tab>
+            <Tab eventKey={2} title="Tab 2">
+                Tab 2 content
+            </Tab>
+            <Tab eventKey={3} title="Tab 3" disabled={true}>
+                Tab 3 content
+            </Tab>
+        </Tabs>;
+           {this.props.error.errorHappened ? <h1>{this.props.error.errorMsg}</h1> : null}
 
            <div className="col-md-12 stats">
             <div className="col-md-3">
@@ -136,9 +151,9 @@ class Results extends React.Component<Props, State> {
                     </div>
                    
                     <div className="col-md-6">
-                    {total.gainPercent ! === Number.POSITIVE_INFINITY ? 
-                    <h1 className="red5"> {total.gainPercent.toFixed(2)}% </h1>
-                      :  <h1 className="red5"> Could not calculate profit </h1>
+                    {total.gainPercent === Number.POSITIVE_INFINITY ?       
+                      <h1 className="red5"> Could not calculate profit </h1>
+                     : <h1 className="red5"> {total.gainPercent.toFixed(2)}% </h1>
                        }
                          <h4>profit made</h4>
                     </div> 

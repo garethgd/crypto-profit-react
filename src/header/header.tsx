@@ -7,10 +7,10 @@ export type State = {
 };
 
 export type Props = {
-
+  isAuthenticated: boolean;
 };
 
-class Header extends React.Component {
+class Header extends React.Component<Props> {
 
     constructor(props: Props) {
         super(props);
@@ -24,8 +24,18 @@ class Header extends React.Component {
           <div className="logo"> 
              Coin Profit
           </div>
-         
           <nav className="menuList">
+         {!this.props.isAuthenticated ?    
+            <div>
+                  <a> 
+                  <Link to={'/login'}> <button className="advert">Login </button> </Link>
+                  </a>
+                  <a > 
+                  <Link to={'/home'}> <button className="advert">Register </button> </Link>
+                  </a> 
+            </div> :
+             null }
+          
           <SocialBuffer className="header-icon" />
          <Link to={'/home'}> <a href="#"> Calculate </a> </Link>
           </nav>

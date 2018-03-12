@@ -1,5 +1,6 @@
 @import './styles/_home';
 @import './styles/results';
+@import './styles/login';
 @import url('https://fonts.googleapis.com/css?family=Roboto+Mono:300,400,500,700');
 
 .App {
@@ -34,6 +35,16 @@ body{
 
 h1, h2, h3, h4{
   font-family: "Roboto Mono",Helvetica,Arial,sans-serif;
+}
+
+label{
+  display:block;
+  font-weight:normal;
+  font-size: 18px;
+  font-family: "Roboto Mono",Helvetica,Arial,sans-serif;
+  color:white;
+  margin-bottom: 20px;
+  text-transform: lowercase;
 }
 
 
@@ -92,4 +103,28 @@ header{
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+.menuList{
+
+  button{
+      background: none;
+      color: #44B8FF;
+      border: none;
+      color: white;
+      width: 100%;
+      width: 50%;
+      font-family: "Roboto Mono",Helvetica,Arial,sans-serif;
+      border-radius: 6px;
+      height: 59px;
+      float: none;
+      font-size: 16px;
+      margin-top: 15px;
+      margin-bottom: 15px;
+      transition: all .2s ease-in-out;
+
+      &:hover{
+          background: #230121;
+          border:none;
+      }
+  }
 }

@@ -23,9 +23,10 @@ export type FormDetails = {
 export type State = {
      startDate: Moment;
      isLoading: boolean,
+     isAuthenticated: boolean,
      coinTypes: any[];
      currencySelected: string,
-     form: { priceEntered?: boolean, currencyEntered?: boolean, errorMsg: string},
+     form: { priceEntered: boolean, currencyEntered: boolean, errorMsg: string},
      coinNames: any[];
      coinSymbols: string[];
      selectedCoinType: '',
@@ -37,6 +38,7 @@ class Home extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
+      isAuthenticated: false,
       isLoading: true,
       currencySelected: '',
       selectedSymbol: '',
@@ -115,13 +117,13 @@ class Home extends React.Component<Props, State> {
  formIsValid(){
   if (!this.state.form.priceEntered){
     this.setState({
-      form: { errorMsg: 'You need to enter an amount'}});
+      form: { errorMsg: 'You need to enter an amount', currencyEntered: this.state.form.currencyEntered, priceEntered: this.state.form.priceEntered}});
       return false;
     }
 
     if ( !this.state.form.currencyEntered){
       this.setState({
-        form: { errorMsg: 'You need to enter a currency'}});
+        form: { errorMsg: 'You need to enter a currency',  currencyEntered: this.state.form.currencyEntered, priceEntered: this.state.form.priceEntered}});
         return false;
     }
 
@@ -137,13 +139,13 @@ class Home extends React.Component<Props, State> {
 onSelectedCurrency(e){
   this.setState({
    currencySelected: e.target.value,
-   form: {currencyEntered: true, priceEntered: this.state.form.priceEntered,  errorMsg: ''}
+   form: {currencyEntered: true, errorMsg: '', priceEntered: this.state.form.priceEntered}
   });
 
   if (e.target.value === ''){
     this.setState({
       selectedPrice: e.target.value,
-      form: {currencyEntered: false, priceEntered: this.state.form.priceEntered, errorMsg: 'You need to enter a currency'}
+      form: {currencyEntered: false, priceEntered: this.state.form.priceEntered,  errorMsg: 'You need to enter a currency'}
     });
   }
 }
@@ -151,13 +153,13 @@ onSelectedCurrency(e){
  onPriceChange(e){
  this.setState({
    selectedPrice: e.target.value,
-   form: {priceEntered: true,  currencyEntered: this.state.form.currencyEntered, errorMsg: ''}
+   form: {priceEntered: true,   currencyEntered: this.state.form.currencyEntered, errorMsg: ''}
  });
 
     if (e.target.value === ''){
       this.setState({
         selectedPrice: e.target.value,
-        form: {priceEntered: false, currencyEntered: this.state.form.currencyEntered, errorMsg: 'You need to enter a price'}
+        form: {priceEntered: false, currencyEntered: this.state.form.currencyEntered, errorMsg: 'You need to enter an amount'}
       });
     }
  }
@@ -165,7 +167,7 @@ onSelectedCurrency(e){
   render() {
     return (
       <section>
-        <Header />
+        <Header isAuthenticated={this.state.isAuthenticated} />
       {this.state.isLoading ?  
         <div className="loader">
             <ClipLoader
@@ -174,14 +176,26 @@ onSelectedCurrency(e){
             /> 
         </div> :  
         <div className="container home">
+          <h1 style={{display: "none"}}> Bitcoin Price Converter and Calculator  </h1>
+          <p style={{display: "none"}}> Convert Bitcoin to and from world currencies.</p>
           <h1 className="title"> Crypto Profit Calculator </h1>
+
             <div className="col-md-6">
             <FaBitcoin className="logo" />
-            <h1> Calculate all your crypto profits from your desired date and display in a graph. </h1>
+            <h2 className="desc"> Calculate all your crypto profits for bitcoin and alt coins and display them a graph. </h2>
             <p> Coin Profit is service that will simply tell you of your profit from any time period. </p>
-            <a className="submit" target="_blank" href="https://www.coinbase.com/join/5a1d548ec5375b02137989f8"><button> Buy coins </button></a>
-        
-            <AdSense.Google client='ca-pub-7774581586268507' slot='6072969822' />
+           <AdSense.Google  className="example_responsive_1" client='ca-pub-7774581586268507' slot='9795739752' />
+           
+        <div className="row">
+          <a className="submit" href="mailto:dunnedev@jsdiaries.com?Subject=Advertising%query" > 
+           <button className="advert">Advertising </button>
+           </a>
+
+          <a className="submit " target="_blank" href="https://www.coinbase.com/join/5a1d548ec5375b02137989f8">
+            <button className="advert"> Buy coins </button>
+          </a>
+
+            </div>
               <span className="ion-social-bitcoin-outline" />
             </div>
             <div className="col-md-6">
@@ -195,7 +209,7 @@ onSelectedCurrency(e){
                   >
                   
                 { this.state.coinTypes ?  this.state.coinNames.map( (coin, index) => {
-                    return (<option  key={coin} > {coin} </option>);
+                    return (<option  key={index} > {coin} </option>);
                   }) : null } 
                   
                   </select>
@@ -204,7 +218,7 @@ onSelectedCurrency(e){
                 <label>Amount of {this.state.selectedSymbol} bought.</label>
                   <input required={true} onChange={(e) => { this.onPriceChange(e); }} type="text" name="price" />
               </div>
-
+              <AdSense.Google  className="example_responsive_1" client='ca-pub-7774581586268507' slot='9791409900' />
                 <div className="currency">
                   <label>Currency </label>
                     <SelectCurrency  name={''} value={this.state.currencySelected} onCurrencySelected={(e) => this.onSelectedCurrency(e)} onChange={(e) => this.onSelectedCurrency(e)}   />
@@ -216,7 +230,7 @@ onSelectedCurrency(e){
                 onChange={(date: Moment) => this.handleChange(date)}  
                />;
                {this.state.form.errorMsg ? <p className="errorMsg"> {this.state.form.errorMsg}</p> : null}
-            
+           
                <div className="submit">
                <Link to={this._buildLinkHref()}> <button onClick={() => this.onSubmit()} type="submit"> Enter </button></Link>
              </div>
