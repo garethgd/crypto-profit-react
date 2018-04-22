@@ -1,19 +1,41 @@
-.login{
+.login {
+    min-height: 600px;
+    display: flex;
+    align-items: center;
     .container{
-        width: 50%;
+        width: 30%;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        -webkit-box-align: center;
+
+        align-items: center;
+        @media only screen and (max-width: 500px) {
+            width: 100%;
+        }
     }
   
-
-h2{
+h2 {
     color:white;
     font-size: 20px;
     margin-bottom:2rem;
     font-family: "Roboto Mono",Helvetica,Arial,sans-serif;
     text-align: center;
     text-transform: lowercase;
-    font-weight: normal;
+    font-weight: bold;
 }
 
+h3{
+    font-family: "Roboto Mono",Helvetica,Arial,sans-serif;
+    line-height: 24px;
+    color: #c1c1c1;
+    font-size: 14px;
+    text-align: left;
+}
+
+label {
+    margin-bottom: 10px;
+    font-weight: normal;
+}
 
 input
     {
@@ -26,6 +48,15 @@ input
         margin-bottom: 20px;
         border: none;
         background: #3d0115;
+    }
+
+    .has-feedback label ~ .form-control-feedback {
+        top: 32px;
+        right: 5px;
+    }
+
+    .has-success .form-control-feedback {
+        color: #54bd56;
     }
 
 }

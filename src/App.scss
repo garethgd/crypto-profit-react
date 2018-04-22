@@ -6,9 +6,6 @@
 .App {
   text-align: center;
 }
-.container{
-
-}
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
@@ -25,7 +22,7 @@ background:red;
   }
 }
 
-body{
+body {
   // font-family: "Roboto Mono",Helvetica,Arial,sans-serif;
   font-family: "Roboto Mono",Helvetica,Arial,sans-serif;
   background: #200122; /* fallback for old browsers */
@@ -53,7 +50,7 @@ header{
   overflow: auto;
 
   .header-icon{
-    font-size: 30px;
+    font-size: 24px;
     margin: 10px;
   }
 
@@ -65,13 +62,17 @@ header{
     font-family: "Roboto Mono",Helvetica,Arial,sans-serif;
   }
 
-  .menuList{
+  .menuList {
     display:inline-block;
     float:right;
     color:white;
-        font-family: "Roboto Mono",Helvetica,Arial,sans-serif;
+    font-family: "Roboto Mono",Helvetica,Arial,sans-serif;
 
-    a{
+    >div{
+      display: inline;
+    }
+
+    a {
       color:white;
       text-decoration: none;
       border:none;
@@ -79,7 +80,12 @@ header{
       border-radius:3px;
       font-family: "Roboto Mono",Helvetica,Arial,sans-serif;
       transition: all .5s ease-in-out;
-      &:hover{
+
+      &:first-child {
+       margin-right: 10px;
+      }
+
+      &:hover {
         color:gray;
       }
     }
@@ -104,27 +110,34 @@ header{
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
-.menuList{
-
-  button{
-      background: none;
-      color: #44B8FF;
-      border: none;
-      color: white;
-      width: 100%;
-      width: 50%;
-      font-family: "Roboto Mono",Helvetica,Arial,sans-serif;
-      border-radius: 6px;
-      height: 59px;
-      float: none;
-      font-size: 16px;
-      margin-top: 15px;
-      margin-bottom: 15px;
-      transition: all .2s ease-in-out;
-
-      &:hover{
-          background: #230121;
-          border:none;
+.menuList {
+ 
+  .email-greeting {
+   span {
+     margin-right: 5px;
+   }
+  }
+  button {
+    background: none;
+    color: #44B8FF;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+    padding: 10px 13px;
+    width: 100%;
+    font-family: "Roboto Mono",Helvetica,Arial,sans-serif;
+    float: none;
+    font-size: 16px;
+    width: 75px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    -webkit-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+      &:hover {
+        background: #230121;
+        width: 90px;
       }
   }
 }

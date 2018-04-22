@@ -1,8 +1,11 @@
 import * as React from 'react';
 import Home from './home/home';
 import Results from './results/results';
-import Login from './login/login';
+import LoginPage from './login/login';
+import LogoutPage from './logout/logout';
+import HistoryPage from './history/history';
 import  { Moment } from 'moment';
+import { app } from './base';
 import './App.css';
 import axios from 'axios';
 import {
@@ -10,7 +13,6 @@ import {
   Route,
   Switch
 } from 'react-router-dom';
-// import {createBrowserHistory} from 'history';
 
 export type Props = {
 
@@ -27,16 +29,21 @@ export type State = {
  loading: boolean;
  error: { errorHappened: boolean, errorMsg: string } ,
  currentPrice: any,
+ user: any,
  total: { newCP?: number, CP?: number, newSP?: number, SP?: number, lostPercent?: number }
+ authenticated: boolean;
 };
 
 class App extends React.Component<Props, State> {
+ private removeAuthListener;
 
   constructor(props: Props) {
     super(props);
     this.state = {
+      authenticated : false,
       error: {errorHappened: false, errorMsg: ''},
       data: [],
+      user: [],
       loading: true,
       currentPrice: [],
       total: { newCP: 0, CP: 0, newSP: 0, SP: 0, lostPercent: 0}
@@ -114,9 +121,62 @@ class App extends React.Component<Props, State> {
     });
   }
 
+  componentWillUnMount() {  
+    this.removeAuthListener = app.auth().onAuthStateChanged( (user) => {
+      if (user) {
+        this.setState({
+          authenticated: true,
+          loading: false
+        });
+      }
+
+    else {
+      this.setState({
+        authenticated: false
+      });
+    }
+    });
+  }
+
+  componentWillMount() {
+    this.removeAuthListener = app.auth().onAuthStateChanged( (user) => {
+      if (user) {
+        this.setState({
+          authenticated: true,
+          loading: false,
+          user: user
+        });
+      }
+      else {
+        this.setState({
+          authenticated: false
+        });
+      }
+    });
+  }
+
   render() {
+    console.log(app);
+    console.log(this.state);
     const HomePage = () => (
-          <Home onSearch={(date, price, coinSym, currency) => { this.getPriceandDate(date, price, coinSym, currency); }} >Dashboard</Home>  
+          <Home 
+           isAuthenticated={this.state.authenticated}
+           fireBaseApp={app}
+           user={this.state.user}
+           onSearch={(date, price, coinSym, currency) => { this.getPriceandDate(date, price, coinSym, currency); }} 
+          >Dashboard
+          </Home>  
+    );
+    const Logout = () => (
+      <LogoutPage app={app} /> 
+    );
+
+    const History = () => (
+      <HistoryPage /> 
+    );
+
+    const Login = () => (
+      <LoginPage isAuthenticated={false} app={app} /> 
     );
 
     const ResultsPage = () => (
@@ -128,7 +188,9 @@ class App extends React.Component<Props, State> {
         <Switch>
           <Route exact={true} path="/" component={HomePage} />
           <Route path="/home" component={HomePage} />
+          <Route path="/logout" component={Logout} />
           <Route path="/login" component={Login} />
+          <Route path="/history" component={HistoryPage} />
           <Route path="/results" component={ResultsPage} />
         </Switch>
       </Router>
